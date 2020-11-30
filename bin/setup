@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+yarn check || yarn install
+bundle check || bundle install

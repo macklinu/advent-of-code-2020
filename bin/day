@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require "thor"
+require "thor/group"
+
+class DayCreator < Thor::Group
+  include Thor::Actions
+  argument :day
+
+  def create_lib_files
+    create_file "lib/day_#{day}.rb", "module Day#{day}\nend"
+  end
+
+  def create_spec_files
+    create_file "spec/day_#{day}_spec.rb", <<~RUBY
+      require "spec_helper"
+      require "day_#{day}"
+
+      describe "Day#{day}" do
+        it "should do something" do
+        end
+      end
+    RUBY
+  end
+
+  private
+
+  def day
+    @day.rjust(2, "0")
+  end
+end
+
+class CLI < Thor
+  register DayCreator, "create", "create", "Creates a new day of Advent of Code boilerplate"
+  default_task :create
+end
+
+CLI.start(ARGV)
