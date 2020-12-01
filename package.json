@@ -15,7 +15,7 @@
     }
   },
   "lint-staged": {
-    "*": "bundle exec standardrb --fix",
+    "*": "bin/lint",
     "*.{json,md}": "prettier --write"
   },
   "prettier": {
