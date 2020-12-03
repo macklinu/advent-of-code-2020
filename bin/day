@@ -16,8 +16,23 @@ class DayCreator < Thor::Group
       require "spec_helper"
       require "day_#{day}"
 
+      include Day#{day}
+
       describe "Day#{day}" do
-        it "should do something" do
+        context "part 1" do
+          it "solves sample input" do
+          end
+
+          it "solves puzzle input" do
+          end
+        end
+
+        context "part 2" do
+          it "solves sample input" do
+          end
+
+          it "solves puzzle input" do
+          end
         end
       end
     RUBY
