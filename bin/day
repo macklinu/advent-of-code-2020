@@ -38,6 +38,10 @@ class DayCreator < Thor::Group
     RUBY
   end
 
+  def create_input_file
+    create_file "lib/day_#{day}_input.txt", ""
+  end
+
   private
 
   def day
